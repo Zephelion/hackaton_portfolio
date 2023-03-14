@@ -1,0 +1,24 @@
+h1{
+    font-weight: 100;
+    font-size: 4em;
+}
+
+section{
+  display: flex;
+  justify-content: center;
+
+  button{
+    aspect-ratio: 5/1;
+    width: 16em;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+}
+    
