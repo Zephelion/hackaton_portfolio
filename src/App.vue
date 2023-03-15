@@ -1,18 +1,16 @@
 <script setup>
 // import test from './components/test.vue'
-import Landing from './components/Landing.vue'
+import Projects from './components/Projects.vue'
 </script>
 
 <template>
-  <header>
-    <Landing/>
-  </header>
   <main>
-    
+      <Projects/>
   </main>
 </template>
 
-<style lang="sass" scoped>
+<style scoped>
+
 
 
 </style>
