@@ -1,19 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import Project from './Project.vue'
 
 const showProjects = ref(false);
 
 function toggleProjects() {
   showProjects.value = !showProjects.value;
 }
-
-const fetchUserInfo = async () => {
-  const response = await fetch('https://api.github.com/users/Zephelion/repos');
-  const data = await response.json();
-  console.log(data);
-}
-
-fetchUserInfo();
 
 </script>
 
@@ -26,14 +19,15 @@ fetchUserInfo();
           <button @click="toggleProjects">Enter</button>
         </section>
     </section>
-    <section v-else>
-      <p>loading projects....</p>
+    <section class="projects" v-else>
+      <h2>Select project</h2>
+      <Project/>
     </section>
   </Transition>
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/scss/landing.scss';
+  @import '../assets/scss/styles.scss';
 
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s ease;
@@ -45,6 +39,28 @@ fetchUserInfo();
 
   p{
     color: black;
+  }
+
+  main{
+    overflow-x: hidden;
+
+    section.projects{
+      width: 100vw;
+      overflow: hidden;
+      padding-left: 55px;
+
+      h2{
+        color: black;
+        font-weight: 200;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        padding: 10px;
+      }
+    }
   }
 
 </style>
