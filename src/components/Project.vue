@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
+import { RouterLink, RouterView } from 'vue-router';
 
 const state = reactive({
     projects: [],
@@ -22,7 +23,7 @@ const getRepo = async (name) => {
     const response = await fetch(`https://api.github.com/repos/Zephelion/${repo}`);
     const data = await response.json();
 
-    console.log(data)
+    // console.log(data)
     state.repo = data;
 }
 
@@ -33,10 +34,14 @@ fetchUserInfo();
 <template>
     <ul>
         <li v-for="project in state.projects" :key="project.id">
-            <img @click=" getRepo(project.name)" src="../../public/fancyhunter.png" alt="symbol">
-            <h3>{{ project.name }}</h3>
+            <!-- <router-link :to="`/project/${project.name}`"> -->
+            <router-link :to="{ name: 'project', params: { name: project.name }}">
+                <img @click=" getRepo(project.name)" src="../../public/fancyhunter.png" alt="symbol">
+                <h3>{{ project.name }}</h3>
+            </router-link>
         </li>
     </ul>
+    <!-- <router-view :project="state.repo"/>  -->
 </template>
 
 <style lang="scss">
@@ -67,19 +72,25 @@ fetchUserInfo();
                 transform: scale(1.1);
             }
 
+            a{
+                text-decoration: none;
+                text-align: center;
 
-
-
-            h3{
-            color: black;
-            font-weight: 300;
-            margin: 0;
+                h3{
+                color: black;
+                font-weight: 300;
+                margin: 0;
+                }
+    
+                img{
+                aspect-ratio: 1/1;
+                width:7em;
+                }
             }
 
-            img{
-            aspect-ratio: 1/1;
-            width:7em;
-            }
+
+
+
     
 
    

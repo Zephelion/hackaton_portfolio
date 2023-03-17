@@ -1,11 +1,11 @@
 <script setup>
 // import test from './components/test.vue'
-import Projects from './components/Projects.vue'
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
   <main>
-      <Projects/>
+    <router-view/>
   </main>
 </template>
 
