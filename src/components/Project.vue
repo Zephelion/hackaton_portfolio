@@ -2,45 +2,30 @@
 import { reactive } from 'vue'
 import { RouterLink, RouterView } from 'vue-router';
 
-const state = reactive({
-    projects: [],
-    repo: []
+
+
+const props = defineProps({
+    repo: Object
 });
 
-// const repo = reactive({
-//     thisRepo: []
-// });
 
-const fetchUserInfo = async () => {
-    const response = await fetch('https://api.github.com/users/Zephelion/repos');
-    const data = await response.json();
-    console.log(data);
-    state.projects = data;
-}
+// const fetchUserInfo = async () => {
+//     const response = await fetch('https://api.github.com/users/Zephelion/repos');
+//     const data = await response.json();
+//     console.log(data);
+//     state.projects = data;
+// }
 
-const getRepo = async (name) => {
-    const repo = name;
-    const response = await fetch(`https://api.github.com/repos/Zephelion/${repo}`);
-    const data = await response.json();
-
-    // console.log(data)
-    state.repo = data;
-}
-
-fetchUserInfo();
+// fetchUserInfo();
 </script>
 
 
 <template>
-    <ul>
-        <li v-for="project in state.projects" :key="project.id">
-            <!-- <router-link :to="`/project/${project.name}`"> -->
-            <router-link :to="{ name: 'project', params: { name: project.name }}">
-                <img @click=" getRepo(project.name)" src="../../public/fancyhunter.png" alt="symbol">
-                <h3>{{ project.name }}</h3>
-            </router-link>
-        </li>
-    </ul>
+    <router-link :to="{ name: 'project', params: { name: repo.name }}">
+        <img src="../../public/fancyhunter.png" alt="symbol">
+        <h3>{{ repo.name }}</h3>
+    </router-link>
+
     <!-- <router-view :project="state.repo"/>  -->
 </template>
 

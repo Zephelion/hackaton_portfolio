@@ -1,12 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import Project from './Project.vue'
 
+
 const showProjects = ref(false);
+
+const state = reactive({
+  projects: [],
+});
+
 
 function toggleProjects() {
   showProjects.value = !showProjects.value;
 }
+
+const fetchUserInfo = async () => {
+    const response = await fetch('https://api.github.com/users/Zephelion/repos');
+    const data = await response.json();
+    console.log(data);
+    state.projects = data;
+}
+
+fetchUserInfo();
 
 </script>
 
@@ -21,7 +36,12 @@ function toggleProjects() {
     </section>
     <section class="projects" v-else>
       <h2>Select project</h2>
-      <Project/>
+      <ul>
+        <li v-for="project in state.projects" :key="project.id">
+            <!-- <router-link :to="`/project/${project.name}`"> -->
+              <Project :repo="project"/>
+        </li>
+    </ul>
     </section>
   </Transition>
 </template>
