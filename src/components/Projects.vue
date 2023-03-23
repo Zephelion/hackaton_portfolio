@@ -14,26 +14,28 @@ function toggleProjects() {
   showProjects.value = !showProjects.value;
 }
 
-const fetchUserInfo = async () => {
+const fetchProjects = async () => {
     const response = await fetch('https://api.github.com/users/Zephelion/repos');
     const data = await response.json();
     console.log(data);
     state.projects = data;
 }
 
-fetchUserInfo();
+fetchProjects();
 
 </script>
 
 <template>
   
   <Transition name="fade" mode="out-in">
+
     <section v-if="!showProjects">
         <h1>Russell Numo</h1>
         <section>
           <button @click="toggleProjects">Enter</button>
         </section>
     </section>
+
     <section class="projects" v-else>
       <h2>Select project</h2>
       <ul>
@@ -43,6 +45,7 @@ fetchUserInfo();
         </li>
     </ul>
     </section>
+    
   </Transition>
 </template>
 

@@ -30,7 +30,6 @@ getRepo(name);
 <template>
     <section>
         <h2>{{ state.repo.name }}</h2>
-        <!-- <h3>{{ project.language }}</h3> -->
     </section>
 </template>
 

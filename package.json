@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "gsap": "^3.11.5",
     "octokit": "^2.0.14",
+    "three": "^0.150.1",
     "vue": "^3.2.45"
   },
   "devDependencies": {

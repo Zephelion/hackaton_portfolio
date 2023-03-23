@@ -7,16 +7,6 @@ import { RouterLink, RouterView } from 'vue-router';
 const props = defineProps({
     repo: Object
 });
-
-
-// const fetchUserInfo = async () => {
-//     const response = await fetch('https://api.github.com/users/Zephelion/repos');
-//     const data = await response.json();
-//     console.log(data);
-//     state.projects = data;
-// }
-
-// fetchUserInfo();
 </script>
 
 
