@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import Project from './Project.vue'
+import ThreeJSComponent from './ThreeJSComponent.vue';
 
 
 const showProjects = ref(false);
@@ -37,13 +38,15 @@ fetchProjects();
     </section>
 
     <section class="projects" v-else>
-      <h2>Select project</h2>
-      <ul>
+      <!-- <h2>Select project</h2> -->
+      <!-- <ul>
         <li v-for="project in state.projects" :key="project.id">
-            <!-- <router-link :to="`/project/${project.name}`"> -->
+            <router-link :to="`/project/${project.name}`">
               <Project :repo="project"/>
         </li>
-    </ul>
+    </ul> -->
+
+    <ThreeJSComponent/>
     </section>
     
   </Transition>
