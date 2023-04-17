@@ -73,7 +73,7 @@ fetchProjects();
     section.projects{
       width: 100vw;
       overflow: hidden;
-      padding-left: 55px;
+      // padding-left: 55px;
 
       h2{
         color: black;
